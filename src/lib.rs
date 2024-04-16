@@ -253,7 +253,6 @@ impl Renderer {
                 &self.texture_pool,
                 mesh)?;
         }
-        unsafe { device_context.ClearState() };
         Ok(())
     }
 
@@ -263,7 +262,6 @@ impl Renderer {
         render_target: &ID3D11RenderTargetView,
         frame_size: (u32, u32)) {
         unsafe {
-            device_context.ClearState();
             device_context.IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
             device_context.IASetInputLayout(&self.input_layout);
             device_context.VSSetShader(&self.vertex_shader, Some(&[]));
